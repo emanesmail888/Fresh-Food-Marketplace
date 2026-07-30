@@ -12,12 +12,7 @@ export default defineConfig({
     minify: 'terser',
     rollupOptions: {
       output: {
-      manualChunks(id) {
-          // Group all node_modules into a 'vendor' chunk
-          if (id.includes('node_modules')) {
-            return 'vendor'
-          }
-        }
+     
       }
     }
   }
