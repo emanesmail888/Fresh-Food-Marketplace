@@ -1,0 +1,457 @@
+@import "tailwindcss";
+
+:root {
+  line-height: 1.6;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 gap-3 flex items-center;
+  }
+
+  .card {
+    @apply bg-white p-6 rounded-xl shadow-sm gap-4 flex flex-col;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 text-gray-700 hover:text-emerald-600 transition-colors text-sm lg:text-base font-medium;
+  }
+
+  .mobile-link {
+    @apply px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors text-base;
+  }
+
+  .swiper-slide {
+    @apply flex items-center justify-center;
+  }
+}
+
+/* RTL specific base styles */
+[dir="rtl"] {
+  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+}
+
+/* LTR specific base styles */
+[dir="ltr"] {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+/* ==================== Margin & Padding Utilities ==================== */
+
+/* Right/Left margin utilities for RTL */
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Margin utilities for RTL - using @layer for better performance */
+@layer utilities {
+  [dir="rtl"] .ml-0 { margin-left: 0; }
+  [dir="rtl"] .mr-0 { margin-right: 0; }
+  [dir="rtl"] .ml-1 { margin-left: 0; margin-right: 0.25rem; }
+  [dir="rtl"] .mr-1 { margin-right: 0; margin-left: 0.25rem; }
+  [dir="rtl"] .ml-2 { margin-left: 0; margin-right: 0.5rem; }
+  [dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
+  [dir="rtl"] .ml-3 { margin-left: 0; margin-right: 0.75rem; }
+  [dir="rtl"] .mr-3 { margin-right: 0; margin-left: 0.75rem; }
+  [dir="rtl"] .ml-4 { margin-left: 0; margin-right: 1rem; }
+  [dir="rtl"] .mr-4 { margin-right: 0; margin-left: 1rem; }
+  [dir="rtl"] .ml-5 { margin-left: 0; margin-right: 1.25rem; }
+  [dir="rtl"] .mr-5 { margin-right: 0; margin-left: 1.25rem; }
+  [dir="rtl"] .ml-6 { margin-left: 0; margin-right: 1.5rem; }
+  [dir="rtl"] .mr-6 { margin-right: 0; margin-left: 1.5rem; }
+  [dir="rtl"] .ml-8 { margin-left: 0; margin-right: 2rem; }
+  [dir="rtl"] .mr-8 { margin-right: 0; margin-left: 2rem; }
+  [dir="rtl"] .ml-10 { margin-left: 0; margin-right: 2.5rem; }
+  [dir="rtl"] .mr-10 { margin-right: 0; margin-left: 2.5rem; }
+
+  /* Padding utilities for RTL */
+  [dir="rtl"] .pl-0 { padding-left: 0; }
+  [dir="rtl"] .pr-0 { padding-right: 0; }
+  [dir="rtl"] .pl-1 { padding-left: 0; padding-right: 0.25rem; }
+  [dir="rtl"] .pr-1 { padding-right: 0; padding-left: 0.25rem; }
+  [dir="rtl"] .pl-2 { padding-left: 0; padding-right: 0.5rem; }
+  [dir="rtl"] .pr-2 { padding-right: 0; padding-left: 0.5rem; }
+  [dir="rtl"] .pl-3 { padding-left: 0; padding-right: 0.75rem; }
+  [dir="rtl"] .pr-3 { padding-right: 0; padding-left: 0.75rem; }
+  [dir="rtl"] .pl-4 { padding-left: 0; padding-right: 1rem; }
+  [dir="rtl"] .pr-4 { padding-right: 0; padding-left: 1rem; }
+  [dir="rtl"] .pl-5 { padding-left: 0; padding-right: 1.25rem; }
+  [dir="rtl"] .pr-5 { padding-right: 0; padding-left: 1.25rem; }
+  [dir="rtl"] .pl-6 { padding-left: 0; padding-right: 1.5rem; }
+  [dir="rtl"] .pr-6 { padding-right: 0; padding-left: 1.5rem; }
+  [dir="rtl"] .pl-8 { padding-left: 0; padding-right: 2rem; }
+  [dir="rtl"] .pr-8 { padding-right: 0; padding-left: 2rem; }
+  [dir="rtl"] .pl-10 { padding-left: 0; padding-right: 2.5rem; }
+  [dir="rtl"] .pr-10 { padding-right: 0; padding-left: 2.5rem; }
+}
+
+/* ==================== Border Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .border-l {
+    border-left-width: 0;
+    border-right-width: 1px;
+  }
+
+  [dir="rtl"] .border-r {
+    border-right-width: 0;
+    border-left-width: 1px;
+  }
+
+  [dir="rtl"] .rounded-l-lg {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  [dir="rtl"] .rounded-r-lg {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  [dir="rtl"] .rounded-l-full {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+  }
+
+  [dir="rtl"] .rounded-r-full {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+  }
+}
+
+/* ==================== Text Alignment ==================== */
+
+@layer utilities {
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+}
+
+/* ==================== Flex & Grid Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .flex-row-reverse {
+    flex-direction: row;
+  }
+
+  /* Space utilities for RTL */
+  [dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  [dir="rtl"] .divide-x > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-x-reverse: 1;
+  }
+}
+
+/* ==================== Position Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .left-0 {
+    left: auto;
+    right: 0;
+  }
+
+  [dir="rtl"] .right-0 {
+    right: auto;
+    left: 0;
+  }
+
+  [dir="rtl"] .left-1 { left: auto; right: 0.25rem; }
+  [dir="rtl"] .left-2 { left: auto; right: 0.5rem; }
+  [dir="rtl"] .left-3 { left: auto; right: 0.75rem; }
+  [dir="rtl"] .left-4 { left: auto; right: 1rem; }
+  [dir="rtl"] .left-5 { left: auto; right: 1.25rem; }
+  [dir="rtl"] .left-6 { left: auto; right: 1.5rem; }
+  [dir="rtl"] .left-8 { left: auto; right: 2rem; }
+  [dir="rtl"] .left-10 { left: auto; right: 2.5rem; }
+
+  [dir="rtl"] .right-1 { right: auto; left: 0.25rem; }
+  [dir="rtl"] .right-2 { right: auto; left: 0.5rem; }
+  [dir="rtl"] .right-3 { right: auto; left: 0.75rem; }
+  [dir="rtl"] .right-4 { right: auto; left: 1rem; }
+  [dir="rtl"] .right-5 { right: auto; left: 1.25rem; }
+  [dir="rtl"] .right-6 { right: auto; left: 1.5rem; }
+  [dir="rtl"] .right-8 { right: auto; left: 2rem; }
+  [dir="rtl"] .right-10 { right: auto; left: 2.5rem; }
+
+  [dir="rtl"] .inset-x-0 {
+    left: 0;
+    right: 0;
+  }
+}
+
+/* ==================== Transform Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .-translate-x-1\/2 {
+    transform: translate(50%, -50%);
+  }
+
+  [dir="rtl"] .translate-x-1\/2 {
+    transform: translate(-50%, -50%);
+  }
+
+  [dir="rtl"] .-translate-x-full {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .translate-x-full {
+    transform: translateX(-100%);
+  }
+}
+
+/* ==================== Float Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .float-left {
+    float: right;
+  }
+
+  [dir="rtl"] .float-right {
+    float: left;
+  }
+}
+
+/* ==================== Input & Form Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] input[type="text"],
+  [dir="rtl"] input[type="email"],
+  [dir="rtl"] input[type="password"],
+  [dir="rtl"] input[type="search"],
+  [dir="rtl"] input[type="tel"],
+  [dir="rtl"] input[type="number"],
+  [dir="rtl"] textarea,
+  [dir="rtl"] select {
+    text-align: right;
+  }
+
+  [dir="rtl"] .search-icon {
+    right: auto;
+    left: 1rem;
+  }
+
+  [dir="rtl"] .has-search-icon input {
+    padding-right: 1rem;
+    padding-left: 2.5rem;
+  }
+}
+
+/* ==================== Dropdown & Menu Utilities ==================== */
+
+@layer utilities {
+  [dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  [dir="rtl"] .dropdown-menu-right {
+    right: auto;
+    left: 0;
+  }
+}
+
+/* ==================== Custom Component Styles ==================== */
+
+@layer components {
+  [dir="rtl"] .quantity-control {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .quantity-control button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  [dir="rtl"] .quantity-control button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  [dir="rtl"] .breadcrumb-separator {
+    transform: rotate(180deg);
+    display: inline-block;
+  }
+
+  [dir="rtl"] .rating-stars {
+    direction: ltr;
+    display: inline-flex;
+  }
+}
+
+/* ==================== Animation & Transitions ==================== */
+
+@layer utilities {
+  [dir="rtl"] .chevron-right,
+  [dir="rtl"] .fa-chevron-right,
+  [dir="rtl"] .chevron-left,
+  [dir="rtl"] .fa-chevron-left {
+    transform: rotate(180deg);
+    display: inline-block;
+  }
+
+  [dir="rtl"] .rotate-180 {
+    transform: rotate(180deg);
+  }
+}
+
+/* ==================== Z-Index Hierarchy ==================== */
+
+@layer base {
+  :root {
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-toast: 1080;
+  }
+}
+
+@layer utilities {
+  .dropdown-container,
+  [class*="dropdown"],
+  [class*="Dropdown"] {
+    z-index: var(--z-dropdown);
+  }
+}
+
+/* ==================== Responsive Utilities ==================== */
+
+@media (max-width: 768px) {
+  [dir="rtl"] .mobile-menu {
+    left: auto;
+    right: 0;
+  }
+
+  [dir="rtl"] .mobile-nav {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  [dir="rtl"] .mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  /* Fix sidebar on mobile for RTL */
+  [dir="rtl"] aside.fixed {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  [dir="rtl"] aside.fixed.translate-x-0 {
+    transform: translateX(0);
+  }
+}
+
+/* ==================== Print Styles ==================== */
+
+@media print {
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+/* ==================== Additional RTL Fixes ==================== */
+
+/* Fix for sidebar animations */
+[dir="rtl"] .sidebar-enter-active,
+[dir="rtl"] .sidebar-leave-active {
+  transition: transform 0.3s ease-in-out;
+}
+
+[dir="rtl"] .sidebar-enter-from,
+[dir="rtl"] .sidebar-leave-to {
+  transform: translateX(100%);
+}
+
+[dir="rtl"] .sidebar-enter-to,
+[dir="rtl"] .sidebar-leave-from {
+  transform: translateX(0);
+}
+
+/* Fix for sliders and carousels in RTL */
+[dir="rtl"] .swiper-slide {
+  direction: rtl;
+}
+
+/* Fix for modal close button positioning */
+[dir="rtl"] .modal-close {
+  right: auto;
+  left: 1rem;
+}
+
+/* Fix for tooltip positioning */
+[dir="rtl"] .tooltip {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .tooltip.right {
+  left: 100%;
+  right: auto;
+}
+
+/* Fix for popover menus */
+[dir="rtl"] .popover-content {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .popover-content.right-aligned {
+  right: auto;
+  left: 0;
+}
+
+

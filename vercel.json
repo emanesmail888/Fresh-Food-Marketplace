@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.5.2"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "env": {
+    "APP_KEY": "base64:q2sTf3fZiUD48jcVb0Jul3zRT42ohiR/q5EJiPEJ6iQ="
+  }
+}

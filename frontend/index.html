@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Your store description here - Fresh products, fast delivery" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Your Store Name" />
+    <meta property="og:description" content="..." />
+    <meta property="og:image" content="https://yoursite.com/og-image.jpg" />
+    <meta property="og:url" content="https://yoursite.com" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- ===== OPTIMIZED FONT LOADING ===== -->
+
+    <!-- 1. Preconnect to font origins (critical for performance) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- 2. Preload ONLY the Google Font CSS (not Font Awesome CSS) -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- 3. Load Google Fonts normally (it will be cached) -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- 4. IMPORTANT: Preload the actual Font Awesome WOFF2 files directly -->
+    <!-- These are the actual font files that the CSS would otherwise load -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2">
+
+    <!-- 5. Load Font Awesome CSS (non-blocking) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>Plants Shop</title>
+</head>
+<body class="h-full">
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
