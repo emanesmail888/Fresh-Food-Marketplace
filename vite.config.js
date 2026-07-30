@@ -6,15 +6,16 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
-        }),
+        }),vue()
     ],
     build: {
     minify: 'terser',
     rollupOptions: {
       output: {
           manualChunks(id) {
-          if (id.includes('node_modules')) return 'vendor'
-        }
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
      
       }
     }
