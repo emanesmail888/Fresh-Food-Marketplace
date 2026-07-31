@@ -4,14 +4,13 @@
   "outputDirectory": "frontend/dist",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.5.2"
+      "runtime": "vercel-php@0.5.2",
+      "memory": 1024,
+      "maxDuration": 30
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/" }
-  ],
-  "env": {
-    "APP_KEY": "base64:q2sTf3fZiUD48jcVb0Jul3zRT42ohiR/q5EJiPEJ6iQ="
-  }
+    { "source": "/api/(.*)", "destination": "/api/index.php" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
