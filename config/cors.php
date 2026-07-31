@@ -21,14 +21,22 @@ return [
 
     // 'allowed_origins' => ['*'],
      'allowed_origins' => [
+        // Add ALL your current and future Vercel preview URLs
+        'https://fresh-food-marketplace-9svfj06z8-emanzidanelgmal-9945s-projects.vercel.app',
         'https://fresh-food-marketplace-cfd0evrn4-emanzidanelgmal-9945s-projects.vercel.app',
         'https://fresh-food-marketplace-fjxdz8nr6-emanzidanelgmal-9945s-projects.vercel.app',
-        'https://fresh-food-marketplace.vercel.app', // Your main domain
-        'http://localhost:5173', // For local development
-        'http://localhost:3000', // Common Vue dev port
+        'https://fresh-food-marketplace.vercel.app', // Your production domain
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'http://127.0.0.1:5173',
+        'http://127.0.0.1:3000',
+    ],
+    'allowed_origins_patterns' => [
+        // This pattern allows ANY Vercel preview deployment
+        '/^https:\/\/fresh-food-marketplace-.*\.vercel\.app$/',
     ],
 
-    'allowed_origins_patterns' => [],
+    // 'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
