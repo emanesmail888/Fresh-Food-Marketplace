@@ -4,10 +4,8 @@
   "outputDirectory": "frontend/dist",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.9.0",
-      "environment": {
-        "PHP_EXTENSIONS": "pdo_mysql,mbstring,json,zip,gd,xml,ctype,curl,fileinfo"
-      }
+      "runtime": "vercel-php@0.9.0"
+
     }
   },
   "rewrites": [
