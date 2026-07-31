@@ -31,12 +31,9 @@ return [
     //     'http://127.0.0.1:3000',
     // ],
     'allowed_origins' => ['*'],
-    'allowed_origins_patterns' => [
-        // This pattern allows ANY Vercel preview deployment
-        '/^https:\/\/fresh-food-marketplace-.*\.vercel\.app$/',
-    ],
+   
 
-    // 'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
