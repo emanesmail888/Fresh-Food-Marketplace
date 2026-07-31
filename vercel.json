@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev --optimize-autoloader --ignore-platform-reqs && rm composer.phar && cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "functions": {
     "api/index.php": {
