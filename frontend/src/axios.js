@@ -9,7 +9,7 @@ const axiosClient = axios.create({
     'Accept': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
   },
-  withCredentials: true, // CRITICAL: This ensures cookies (sessions) are sent with requests
+  withCredentials: false, // CRITICAL: This ensures cookies (sessions) are sent with requests
   withXSRFToken: true
 });
 
