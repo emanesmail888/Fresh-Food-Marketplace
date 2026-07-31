@@ -2,3 +2,5 @@
 /.env
 /.git
 /tests
+storage
+
