@@ -19,7 +19,14 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    // 'allowed_origins' => ['*'],
+     'allowed_origins' => [
+        'https://fresh-food-marketplace-cfd0evrn4-emanzidanelgmal-9945s-projects.vercel.app',
+        'https://fresh-food-marketplace-fjxdz8nr6-emanzidanelgmal-9945s-projects.vercel.app',
+        'https://fresh-food-marketplace.vercel.app', // Your main domain
+        'http://localhost:5173', // For local development
+        'http://localhost:3000', // Common Vue dev port
+    ],
 
     'allowed_origins_patterns' => [],
 
