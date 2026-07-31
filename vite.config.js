@@ -3,8 +3,5 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  build: {
-    chunkSizeWarningLimit: 1000,
-    
-  }
+  // That's it! No manualChunks at all
 })
