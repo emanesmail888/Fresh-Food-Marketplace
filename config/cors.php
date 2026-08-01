@@ -19,16 +19,20 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [
-        'https://frontend-indol-chi-59.vercel.app', // Your frontend URL
-        'https://*.vercel.app', // Allows all Vercel preview deployments
-    ],
-    'allowed_origins_patterns' => [
-        '/^https:\/\/.*\.vercel\.app$/',
-    ],
+    'allowed_origins' => ['*'],
+
+    'allowed_origins_patterns' => [],
+
+    // 'allowed_origins' => [
+    //     'https://frontend-indol-chi-59.vercel.app', // Your frontend URL
+    //     'https://*.vercel.app', // Allows all Vercel preview deployments
+    // ],
+    // 'allowed_origins_patterns' => [
+    //     '/^https:\/\/.*\.vercel\.app$/',
+    // ],
 
     'allowed_headers' => ['*'],
-    
+
     'exposed_headers' => [],
 
     'max_age' => 0,
