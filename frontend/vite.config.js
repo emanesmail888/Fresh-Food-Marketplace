@@ -3,25 +3,31 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [vue(),
-    tailwindcss(),
-  ],
+  plugins: [vue(), tailwindcss()],
 
   build: {
-    minify: 'terser', // أو 'esbuild' للسرعة
+    minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // إزالة console.log
+        drop_console: true,
         drop_debugger: true
       }
     },
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks(id) {
           // تقسيم المكتبات الكبيرة
-          vendor: ['vue', 'vuex', 'vue-router'],
-          charts: ['echarts'],
-          ui: ['@headlessui/vue', 'vue-toastification']
+          if (id.includes('node_modules')) {
+            if (id.includes('vue') || id.includes('vuex') || id.includes('vue-router')) {
+              return 'vendor'
+            }
+            if (id.includes('echarts')) {
+              return 'charts'
+            }
+            if (id.includes('@headlessui') || id.includes('vue-toastification')) {
+              return 'ui'
+            }
+          }
         }
       }
     }
