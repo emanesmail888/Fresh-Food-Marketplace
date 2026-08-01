@@ -19,24 +19,16 @@ return [
 
     'allowed_methods' => ['*'],
 
-
-
-    // 'allowed_origins' => [
-    //     'https://frontend-indol-chi-59.vercel.app/',
-    //     'https://frontend-indol-chi-59.vercel.app',
-    //     'https://*.vercel.app',
-    //     'http://localhost:5173',
-    //     'http://localhost:3000',
-    //     'http://localhost:8000',
-    //     'http://127.0.0.1:5173',
-    //     'http://127.0.0.1:3000',
-    // ],
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
+    'allowed_origins' => [
+        'https://frontend-indol-chi-59.vercel.app', // Your frontend URL
+        'https://*.vercel.app', // Allows all Vercel preview deployments
+    ],
+    'allowed_origins_patterns' => [
+        '/^https:\/\/.*\.vercel\.app$/',
+    ],
 
     'allowed_headers' => ['*'],
-
+    
     'exposed_headers' => [],
 
     'max_age' => 0,
