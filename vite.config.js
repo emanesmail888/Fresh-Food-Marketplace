@@ -23,13 +23,7 @@ export default defineConfig({
                         if (id.includes('axios')) {
                             return 'vendor';
                         }
-                        // You can add more conditions for other libraries
-                        // if (id.includes('lodash')) {
-                        //     return 'utils';
-                        // }
-                        // if (id.includes('chart.js')) {
-                        //     return 'charts';
-                        // }
+                      
                     }
                 }
             }
