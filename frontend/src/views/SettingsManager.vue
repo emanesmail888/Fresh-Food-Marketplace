@@ -528,7 +528,7 @@ const store = useStore()
 const cleanupWebSocket = () => {
 
   try {
-   
+
     console.log('Cleaning up WebSocket connections...')
   } catch (error) {
     console.error('Error cleaning up WebSocket:', error)
@@ -558,7 +558,7 @@ const uploadCancelled = ref(false)
 const multiUploadProgress = ref(0)
 const uploadedImagesCount = ref(0)
 
-const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
+const storageBase = import.meta.env.VITE_STORAGE_URL ;
 
 
 // Computed from store

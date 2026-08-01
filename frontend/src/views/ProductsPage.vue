@@ -248,7 +248,7 @@ const addingToCart = ref(new Set());
 const localUpdatingItems = ref(new Set());
 const wishlistLoading = ref({});
 
-const storageBase = import.meta.env.VITE_STORAGE_URL || 'http://localhost:8000';
+const storageBase = import.meta.env.VITE_STORAGE_URL ;
 
 // Unit configuration
 const UNIT_CONFIG = {

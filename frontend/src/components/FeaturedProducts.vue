@@ -244,7 +244,7 @@ const { currentLanguage, currentDirection, t, formatPrice, formatWeight } = useL
 
 const displayedProducts = computed(() => props.products);
 const toast = useToast();
-const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000";
+const storageBase = import.meta.env.VITE_STORAGE_URL ;
 
 // State
 

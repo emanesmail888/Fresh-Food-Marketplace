@@ -192,7 +192,7 @@ async function fetchService() {
     form.value.description_ar = service.description_ar || ''
 
     imagePreview.value = service.image
-      ? `${import.meta.env.VITE_STORAGE_URL || 'http://localhost:8000/storage'}/${service.image}`
+      ? `${import.meta.env.VITE_STORAGE_URL}/${service.image}`
       : null
 
   } catch (err) {

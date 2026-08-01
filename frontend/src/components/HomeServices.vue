@@ -146,7 +146,7 @@ const store = useStore();
 const { currentLanguage, currentDirection, t } = useLanguage();
 
 // Constants
-const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
+const storageBase = import.meta.env.VITE_STORAGE_URL ;
 
 // Computed - Store State
 

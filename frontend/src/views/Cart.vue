@@ -268,7 +268,7 @@ const language = useLanguage();
 
 // Toast instance
 const toast = useToast();
-const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
+const storageBase = import.meta.env.VITE_STORAGE_URL;
 
 // Local state for optimistic updates
 const updatingItems = ref(new Set());

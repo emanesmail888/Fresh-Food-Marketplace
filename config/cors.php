@@ -19,19 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    // 'allowed_origins' => ['*'],
-    //  'allowed_origins' => [
-    //     // Add ALL your current and future Vercel preview URLs
-    //     'https://foodmarketplace.byethost16.com/',
 
-    //     'https://fresh-food-marketplace.vercel.app', // Your production domain
-    //     'http://localhost:5173',
-    //     'http://localhost:3000',
-    //     'http://127.0.0.1:5173',
-    //     'http://127.0.0.1:3000',
-    // ],
     'allowed_origins' => ['*'],
-   
+
 
     'allowed_origins_patterns' => [],
 
@@ -41,6 +31,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];
