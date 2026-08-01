@@ -8,27 +8,5 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    build: {
-        minify: 'terser',
-        rollupOptions: {
-            output: {
-                // Fix: Use function syntax instead of object
-                manualChunks(id) {
-                    if (id.includes('node_modules')) {
-                        // Group Vue related packages
-                        if (id.includes('vue') || id.includes('vuex')) {
-                            return 'vendor';
-                        }
-                        // Group Axios
-                        if (id.includes('axios')) {
-                            return 'vendor';
-                        }
-                      
-                    }
-                }
-            }
-        }
-    }
+
 });
-
-
