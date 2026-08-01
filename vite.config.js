@@ -8,15 +8,5 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    build: {
-    minify: 'terser',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['vue', 'vuex', 'axios'],
-          // Add more heavy libs if needed
-        }
-      }
-    }
-  }
+    
 });
