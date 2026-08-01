@@ -15,15 +15,12 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*','api/**', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
 
-    // 'allowed_origins' => ['*'],
 
-
-    // 'allowed_origins_patterns' => [],
     'allowed_origins' => [
         'https://frontend-indol-chi-59.vercel.app/',
         'https://frontend-indol-chi-59.vercel.app',
@@ -35,9 +32,7 @@ return [
         'http://127.0.0.1:3000',
     ],
 
-    'allowed_origins_patterns' => [
-        '/^https:\/\/.*\.vercel\.app$/',
-    ],
+    'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
