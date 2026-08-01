@@ -80,7 +80,7 @@
 
 
 
-
+        
 
         <!-- Review Form -->
         <ReviewForm
@@ -207,7 +207,7 @@ const props = defineProps({
 const store = useStore();
 const toast = useToast();
 const { currentLanguage, currentDirection, t } = useLanguage();
-const storageBase = import.meta.env.VITE_STORAGE_URL 
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/"
 
 // State
 const showReviewForm = ref(false);

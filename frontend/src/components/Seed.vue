@@ -277,7 +277,7 @@ const store = useStore()
 const router = useRouter();
 
 const toast = useToast()
-const storageBase = import.meta.env.VITE_STORAGE_URL 
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/"
 
 const {
     currentLanguage,

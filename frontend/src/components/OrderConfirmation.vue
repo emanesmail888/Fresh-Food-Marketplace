@@ -220,7 +220,7 @@ const store = useStore();
 const toast = useToast();
 const { t, formatPrice, formatDate, currentDirection ,currentLanguage} = useLanguage();
 
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
 const reordering = ref(false);
 const cancelling = ref(false);
 
@@ -329,7 +329,7 @@ const canReorder = computed(() => {
 // Format order status
 
 const formatOrderStatus = (status) => {
-    const statuses = {
+    const statuses = {   
         'pending': currentLanguage.value === 'ar' ? 'قيد الانتظار' : 'Pending',
         'processing': currentLanguage.value === 'ar' ? 'قيد المعالجة' : 'Processing',
         'shipped': currentLanguage.value === 'ar' ? 'تم الشحن' : 'Shipped',

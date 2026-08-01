@@ -228,7 +228,7 @@ const toast = useToast();
 const { t, currentLanguage } = useLanguage();
 
 const showStatusModal = ref(false);
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/storage";
 
 const order = computed(() => store.state.orders.order.currentOrder);
 const orderLoading = computed(() => store.state.orders.order.orderLoading);

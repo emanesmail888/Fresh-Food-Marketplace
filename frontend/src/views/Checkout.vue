@@ -905,5 +905,5 @@ onMounted(async () => {
 // Watch for route changes
 watch(() => route.query, handleStripeReturn, { deep: true });
 
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
 </script>

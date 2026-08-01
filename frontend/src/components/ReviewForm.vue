@@ -127,7 +127,7 @@ const toast = useToast();
 const { t } = useLanguage();
 
 // Storage base URL
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
 
 const form = ref({
     rating: 5,

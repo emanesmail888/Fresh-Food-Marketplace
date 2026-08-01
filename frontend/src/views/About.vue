@@ -452,7 +452,7 @@ export default {
             return store.state.aboutSettings || {};
         },
         storageBase() {
-            return import.meta.env.VITE_STORAGE_URL;
+            return import.meta.env.VITE_STORAGE_URL || 'http://localhost:8000/storage';
         },
 
         heroImages() {

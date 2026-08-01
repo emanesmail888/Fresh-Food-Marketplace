@@ -290,7 +290,7 @@ const {
 
 // Get store
 const store = useStore()
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
 const homeSettings = computed(() => store.state.homeSettings || {})
 
 

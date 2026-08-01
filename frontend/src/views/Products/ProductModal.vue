@@ -363,7 +363,7 @@ const {
 } = useLanguage();
 
 const storageBase =
-  import.meta.env.VITE_STORAGE_URL ;
+  import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/";
 
 // Props & Emits
 const props = defineProps({

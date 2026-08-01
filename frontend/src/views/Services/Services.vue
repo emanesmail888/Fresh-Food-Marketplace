@@ -193,7 +193,7 @@ const sortField = ref('created_at');
 const sortDirection = ref('desc');
 
 const services = computed(() => store.state.services.services);
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || 'http://localhost:8000/storage';
 
 onMounted(() => {
   getServices();

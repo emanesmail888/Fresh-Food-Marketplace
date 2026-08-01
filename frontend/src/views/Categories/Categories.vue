@@ -188,7 +188,7 @@ const sortDirection = ref('desc')
 const categories = computed(() => store.state.categories);
 
 
-const storageBase = import.meta.env.VITE_STORAGE_URL 
+const storageBase = import.meta.env.VITE_STORAGE_URL || 'http://localhost:8000/'
 
 
 onMounted(() => {

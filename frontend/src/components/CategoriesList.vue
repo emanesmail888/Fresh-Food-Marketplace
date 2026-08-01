@@ -83,7 +83,7 @@ const { currentLanguage, t } = useLanguage();
 const router = useRouter(); // Initialize router
 const modules = [Navigation, Pagination, Scrollbar]; // add EffectCards if needed
 
-const storageBase = import.meta.env.VITE_STORAGE_URL ;
+const storageBase = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000";
 const store = useStore()
 
 const isHomeLoading = computed(() => store.state.isHomeLoading);
