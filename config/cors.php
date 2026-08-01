@@ -25,7 +25,7 @@ return [
 
     // 'allowed_origins_patterns' => [],
     'allowed_origins' => [
-        'https://frontend-indol-chi-59.vercel.app',
+        'https://frontend-indol-chi-59.vercel.app/',
         'https://*.vercel.app',
         'http://localhost:5173',
         'http://localhost:3000',
