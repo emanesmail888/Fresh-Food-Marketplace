@@ -8,17 +8,33 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-//     build: {
-//     minify: 'terser',
-//     rollupOptions: {
-//       output: {
-//         manualChunks: {
-//           vendor: ['vue', 'vuex', 'axios'],
-//           // Add more heavy libs if needed
-//         }
-//       }
-//     }
-//   }
+    build: {
+        minify: 'terser',
+        rollupOptions: {
+            output: {
+                // Fix: Use function syntax instead of object
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        // Group Vue related packages
+                        if (id.includes('vue') || id.includes('vuex')) {
+                            return 'vendor';
+                        }
+                        // Group Axios
+                        if (id.includes('axios')) {
+                            return 'vendor';
+                        }
+                        // You can add more conditions for other libraries
+                        // if (id.includes('lodash')) {
+                        //     return 'utils';
+                        // }
+                        // if (id.includes('chart.js')) {
+                        //     return 'charts';
+                        // }
+                    }
+                }
+            }
+        }
+    }
 });
 
 
