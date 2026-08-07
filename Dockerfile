@@ -1,45 +1,50 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
     unzip \
-    nodejs \
-    npm \
+    zip \
+    libpng-dev \
+    libxml2-dev \
+    libxslt-dev \
+    libpq-dev \
+    default-mysql-client \
+    default-libmysqlclient-dev \
+    libfreetype-dev \
+    libjpeg62-turbo-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
-RUN docker-php-ext-install \
+# Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install \
     pdo_mysql \
     mbstring \
     exif \
     pcntl \
     bcmath \
-    gd
+    gd \
+    zip \
+    sodium \
+    xml \
+    xsl
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Install Composer
+# Get Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy existing application directory contents
+# Copy application files
 COPY . /var/www/html
 
 # Copy .env.example to .env if .env doesn't exist
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
-# Install dependencies
-RUN composer install
+# Install dependencies (without dev dependencies for production)
+RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 # Generate application key
 RUN php artisan key:generate
@@ -54,14 +59,9 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Configure Apache to serve from public directory
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+# Install PHP built-in server (for development) or use a web server
+# For Railway, we'll use PHP's built-in server
+EXPOSE 8000
 
-# Configure Apache to allow .htaccess
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start Apache
-CMD ["apache2-foreground"]
+# Start PHP built-in server
+CMD php artisan serve --host=0.0.0.0 --port=8000
