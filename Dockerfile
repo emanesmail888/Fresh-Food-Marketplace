@@ -39,7 +39,7 @@ COPY . /var/www/html
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Install dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install 
 
 # Generate application key
 RUN php artisan key:generate
