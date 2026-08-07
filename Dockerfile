@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -39,7 +39,7 @@ COPY . /var/www/html
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Install dependencies
-RUN composer install 
+RUN composer install
 
 # Generate application key
 RUN php artisan key:generate
