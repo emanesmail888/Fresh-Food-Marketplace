@@ -44,8 +44,11 @@ COPY . /var/www/html
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Install dependencies (without dev dependencies for production)
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install
+RUN npm install
 
+# Build frontend assets
+RUN npm run build
 # Generate application key
 RUN php artisan key:generate
 
