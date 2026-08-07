@@ -15,19 +15,10 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          // تقسيم المكتبات الكبيرة
-          if (id.includes('node_modules')) {
-            if (id.includes('vue') || id.includes('vuex') || id.includes('vue-router')) {
-              return 'vendor'
-            }
-            if (id.includes('echarts')) {
-              return 'charts'
-            }
-            if (id.includes('@headlessui') || id.includes('vue-toastification')) {
-              return 'ui'
-            }
-          }
+        manualChunks: {
+          vendor: ['vue', 'vuex', 'vue-router'],
+          charts: ['echarts'],
+          ui: ['@headlessui/vue', 'vue-toastification']
         }
       }
     }
