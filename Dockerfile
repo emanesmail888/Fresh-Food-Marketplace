@@ -17,9 +17,6 @@ RUN apt-get update && apt-get install -y \
     default-libmysqlclient-dev \
     libfreetype-dev \
     libjpeg62-turbo-dev \
-    apt-transport-https \
-    ca-certificates \
-    gnupg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -40,10 +37,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Get Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install Node.js 20.x (LTS - actively supported)
+# Install Node.js 20.x with compatible npm version
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g npm@latest \
+    && npm install -g npm@10.9.2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -56,14 +53,11 @@ COPY . .
 # Copy .env.example to .env if .env doesn't exist
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
-# Install dependencies (without dev dependencies for production)
+# Install dependencies
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# Install npm dependencies
-RUN npm install
-
-# Build frontend assets
-RUN npm run build || true
+# Install npm dependencies and build
+RUN npm install && npm run build || true
 
 # Generate application key
 RUN php artisan key:generate
