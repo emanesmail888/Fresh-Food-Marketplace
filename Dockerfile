@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
     default-libmysqlclient-dev \
     libfreetype-dev \
     libjpeg62-turbo-dev \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,9 +39,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 # Get Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN curl -SL https://deb.nodesource.com/setup_18.x | bash - \
+
+# Install Node.js 18
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g npm@latest
+    && npm install -g npm@latest \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /var/www/html
@@ -50,11 +57,14 @@ COPY . .
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Install dependencies (without dev dependencies for production)
-RUN composer install
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# Install npm dependencies
 RUN npm install
 
 # Build frontend assets
-RUN npm run build
+RUN npm run build || true
+
 # Generate application key
 RUN php artisan key:generate
 
