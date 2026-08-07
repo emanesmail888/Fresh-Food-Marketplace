@@ -59,8 +59,7 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Install PHP built-in server (for development) or use a web server
-# For Railway, we'll use PHP's built-in server
+# Expose port
 EXPOSE 8000
 
 # Start PHP built-in server
