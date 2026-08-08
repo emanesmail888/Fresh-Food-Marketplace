@@ -80,7 +80,7 @@
 
 
 
-        
+
 
         <!-- Review Form -->
         <ReviewForm
@@ -353,7 +353,9 @@ const deleteReview = async (reviewId) => {
 const getImageUrl = (imagePath) => {
     if (!imagePath) return '/images/placeholder.jpg';
      if (imagePath.startsWith("http")) return imagePath;
-    return `${storageBase}/${imagePath}`;
+     const cleanPath = ltrim(imagePath, '/');
+
+    return `${storageBase}/${cleanPath}`;
 
 };
 

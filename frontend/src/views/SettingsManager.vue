@@ -528,7 +528,7 @@ const store = useStore()
 const cleanupWebSocket = () => {
 
   try {
-   
+
     console.log('Cleaning up WebSocket connections...')
   } catch (error) {
     console.error('Error cleaning up WebSocket:', error)
@@ -638,6 +638,7 @@ const getMultiImages = (setting) => {
         if (img && !img.startsWith('/storage/') && !img.startsWith('http')) {
           return '/storage/' + img.replace(/^\/+/, '')
         }
+        
         return img
       })
     }

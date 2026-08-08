@@ -281,6 +281,7 @@ const getProductLink = (product) => {
 const getProductImage = (imagePath) => {
     if (!imagePath) return "/images/placeholder.jpg";
     if (imagePath.startsWith("http")) return imagePath;
+    
     return `${storageBase}/${imagePath}`;
 };
 
