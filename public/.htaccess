@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+# Limit file upload size
+LimitRequestBody 2147483648
+
+# Increase timeout for large uploads
+Timeout 3600
+
+# PHP values (if mod_php is used)
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 2G
+    php_value post_max_size 2G
+    php_value max_execution_time 3600
+    php_value max_input_time 3600
+</IfModule>
+
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 2G
+    php_value post_max_size 2G
+    php_value max_execution_time 3600
+    php_value max_input_time 3600
+</IfModule>
